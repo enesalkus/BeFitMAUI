@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|c:\\users\\ns\\desktop\\befit\\befitmaui\\befitmaui\\data\\befitdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|solutionrelative:befitmaui\\data\\befitdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|c:\\users\\ns\\desktop\\befit\\befitmaui\\befitmaui\\views\\addsessionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|solutionrelative:befitmaui\\views\\addsessionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|c:\\users\\ns\\desktop\\befit\\befitmaui\\befitmaui\\viewmodels\\addsessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|solutionrelative:befitmaui\\viewmodels\\addsessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|c:\\users\\ns\\desktop\\befit\\befitmaui\\befitmaui\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|solutionrelative:befitmaui\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|c:\\users\\ns\\desktop\\befit\\befitmaui\\befitmaui\\services\\exerciseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50249DF3-B19C-4A67-9BB7-1B347AEB8997}|BeFitMAUI\\BeFitMAUI.csproj|solutionrelative:befitmaui\\services\\exerciseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BeFitDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Data\\BeFitDbContext.cs",
+              "RelativeDocumentMoniker": "BeFitMAUI\\Data\\BeFitDbContext.cs",
+              "ToolTip": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Data\\BeFitDbContext.cs",
+              "RelativeToolTip": "BeFitMAUI\\Data\\BeFitDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T15:29:27.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddSessionPage.xaml",
+              "DocumentMoniker": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Views\\AddSessionPage.xaml",
+              "RelativeDocumentMoniker": "BeFitMAUI\\Views\\AddSessionPage.xaml",
+              "ToolTip": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Views\\AddSessionPage.xaml",
+              "RelativeToolTip": "BeFitMAUI\\Views\\AddSessionPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-17T15:29:06.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddSessionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\ViewModels\\AddSessionViewModel.cs",
+              "RelativeDocumentMoniker": "BeFitMAUI\\ViewModels\\AddSessionViewModel.cs",
+              "ToolTip": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\ViewModels\\AddSessionViewModel.cs",
+              "RelativeToolTip": "BeFitMAUI\\ViewModels\\AddSessionViewModel.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T15:28:56.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "BeFitMAUI\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Services\\UserService.cs",
+              "RelativeToolTip": "BeFitMAUI\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T15:28:51.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExerciseService.cs",
+              "DocumentMoniker": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Services\\ExerciseService.cs",
+              "RelativeDocumentMoniker": "BeFitMAUI\\Services\\ExerciseService.cs",
+              "ToolTip": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\Services\\ExerciseService.cs",
+              "RelativeToolTip": "BeFitMAUI\\Services\\ExerciseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T15:28:49.932Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

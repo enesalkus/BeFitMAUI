@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BeFitMAUI.ViewModels"
+             x:Class="BeFitMAUI.Views.SessionDetailPage"
+             Title="Session Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteSessionCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, Auto, *">
+        <VerticalStackLayout Padding="10" Spacing="5">
+            <Label Text="{Binding Session.StartTime, StringFormat='Start: {0:g}'}" FontSize="16" />
+            <Label Text="{Binding Session.EndTime, StringFormat='End: {0:t}'}" FontSize="16" />
+        </VerticalStackLayout>
+        
+        <Button Grid.Row="1" Text="Add Exercise" Command="{Binding AddExerciseCommand}" Margin="10" />
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Session.Exercises}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SessionDetailViewModel}}, Path=DeleteExerciseCommand}" CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Frame Margin="5" Padding="10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding ExerciseType.Name}" FontAttributes="Bold" FontSize="Medium" />
+                                <Label Text="{Binding Load, StringFormat='Load: {0}kg'}" />
+                                <Label Text="{Binding Sets, StringFormat='Sets: {0}'}" />
+                                <Label Text="{Binding Repetitions, StringFormat='Reps: {0}'}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+             <CollectionView.EmptyView>
+                     <Label Text="No exercises added yet." HorizontalOptions="Center" VerticalOptions="Center" />
+                </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>

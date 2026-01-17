@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BeFitMAUI.ViewModels"
+             x:Class="BeFitMAUI.Views.DashboardPage"
+             Title="Dashboard">
+             
+    <Grid RowDefinitions="Auto, *">
+        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center" Grid.RowSpan="2"/>
+        
+        <Label Text="Your Progress (Last 28 Days)" FontSize="20" FontAttributes="Bold" Margin="20"/>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Stats}" Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10" BorderColor="Gray" CornerRadius="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding ExerciseName}" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource Primary}"/>
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding Frequency, StringFormat='Freq: {0}'}"/>
+                                <Label Text="{Binding TotalRepetitions, StringFormat='Reps: {0}'}"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding AverageLoad, StringFormat='Avg Load: {0:F1}kg'}"/>
+                                <Label Text="{Binding MaxLoad, StringFormat='Max: {0:F1}kg'}"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Label Text="No training data yet. Go workout!" HorizontalOptions="Center" VerticalOptions="Center" Margin="20"/>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>

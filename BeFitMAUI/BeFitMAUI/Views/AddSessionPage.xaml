@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BeFitMAUI.ViewModels"
+             x:Class="BeFitMAUI.Views.AddSessionPage"
+             Title="New Session">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Command="{Binding CancelCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Spacing="20" Padding="20">
+        <Label Text="Start Time" FontSize="Medium" />
+        <DatePicker Date="{Binding StartTime}" />
+        <TimePicker Time="{Binding StartTime, Mode=TwoWay}" /> <!-- Converter might be needed to bind Time to DateTime properly or use separate properties -->
+        
+        <Label Text="End Time" FontSize="Medium" />
+        <DatePicker Date="{Binding EndTime}" />
+        <TimePicker Time="{Binding EndTime}" />
+
+        <Button Text="Save Session" Command="{Binding SaveCommand}" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BeFitMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BeFitMAUI"
+    xmlns:views="clr-namespace:BeFitMAUI.Views"
+    Title="BeFitMAUI">
+
+    <TabBar>
+        <Tab Title="Dashboard" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:DashboardPage}" Route="DashboardPage" />
+        </Tab>
+        <Tab Title="Sessions" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:SessionsPage}" Route="SessionsPage" />
+        </Tab>
+        <Tab Title="Exercises" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ExercisesPage}" Route="ExercisesPage" />
+        </Tab>
+    </TabBar>
+
+</Shell>
