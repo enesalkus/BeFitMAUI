@@ -13,20 +13,19 @@ namespace BeFitMAUI.Services
             _context = context;
         }
 
-        public async Task<List<TrainingSession>> GetSessionsAsync(string userId)
+        public async Task<List<TrainingSession>> GetSessionsAsync()
         {
             return await _context.TrainingSessions
-                .Where(t => t.UserId == userId)
                 .OrderByDescending(t => t.StartTime)
                 .ToListAsync();
         }
 
-        public async Task<TrainingSession> GetSessionAsync(int id, string userId)
+        public async Task<TrainingSession> GetSessionAsync(int id)
         {
             return await _context.TrainingSessions
                 .Include(t => t.Exercises)
                     .ThenInclude(e => e.ExerciseType)
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+                .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task SaveSessionAsync(TrainingSession session)

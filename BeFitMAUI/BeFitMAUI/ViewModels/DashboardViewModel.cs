@@ -35,28 +35,7 @@ namespace BeFitMAUI.ViewModels
             IsLoading = true;
             try
             {
-                // TODO: Get userId from a UserService or settings. Using a placeholder for now.
-                // Assuming single user per device for now, or fetch the user created in App.xaml.cs?
-                // For now, we will assume we can get one user or just pass a known ID if we seed one.
-                // Or better, StatsService could assume default user if userId is null, but we implemented with userId.
-                 
-                // We'll query all users and take first for now or null
-                // Wait, we need a user id. Let's hardcode one for testing or fetch context.
-                // Ideally, we should have a generic "User" context service.
-                // I will modify StatsService usage to just pass a hardcoded ID for now since we haven't implemented Login.
-                
-                // Let's create a temporary user ID management strategy. 
-                // Creating a new GUID for every session is bad. 
-                // We should store it in Preferences.
-                
-                string userId = Preferences.Get("UserId", string.Empty);
-                if (string.IsNullOrEmpty(userId))
-                {
-                    userId = Guid.NewGuid().ToString();
-                    Preferences.Set("UserId", userId);
-                }
-
-                var statsList = await _statsService.GetStatsAsync(userId);
+                var statsList = await _statsService.GetStatsAsync();
                 Stats.Clear();
                 foreach (var s in statsList)
                 {

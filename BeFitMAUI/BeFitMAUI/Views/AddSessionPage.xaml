@@ -3,20 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:BeFitMAUI.ViewModels"
              x:Class="BeFitMAUI.Views.AddSessionPage"
-             Title="New Session">
+             Title="Trening">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Command="{Binding CancelCommand}" />
+        <ToolbarItem Text="Anuluj" Command="{Binding CancelCommand}" />
     </ContentPage.ToolbarItems>
 
     <VerticalStackLayout Spacing="20" Padding="20">
-        <Label Text="Start Time" FontSize="Medium" />
+        <Label Text="Czas rozpoczęcia" FontSize="Medium" />
         <DatePicker Date="{Binding StartTime}" />
-        <TimePicker Time="{Binding StartTime, Mode=TwoWay}" /> <!-- Converter might be needed to bind Time to DateTime properly or use separate properties -->
+        <TimePicker Time="{Binding StartTime}" /> 
         
-        <Label Text="End Time" FontSize="Medium" />
+        <Label Text="Czas zakończenia" FontSize="Medium" />
         <DatePicker Date="{Binding EndTime}" />
         <TimePicker Time="{Binding EndTime}" />
 
-        <Button Text="Save Session" Command="{Binding SaveCommand}" HorizontalOptions="Center" />
+        <Button Text="Zapisz" Command="{Binding SaveCommand}" HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

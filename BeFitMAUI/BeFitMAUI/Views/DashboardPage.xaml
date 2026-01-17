@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:BeFitMAUI.ViewModels"
              x:Class="BeFitMAUI.Views.DashboardPage"
-             Title="Dashboard">
+             Title="Pulpit">
              
     <Grid RowDefinitions="Auto, *">
         <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center" Grid.RowSpan="2"/>
         
-        <Label Text="Your Progress (Last 28 Days)" FontSize="20" FontAttributes="Bold" Margin="20"/>
+        <Label Text="Twoje Postępy (Ostatnie 28 dni)" FontSize="20" FontAttributes="Bold" Margin="20"/>
 
         <CollectionView Grid.Row="1" ItemsSource="{Binding Stats}" Margin="10">
             <CollectionView.ItemTemplate>
@@ -21,7 +21,7 @@
                                 <Label Text="{Binding TotalRepetitions, StringFormat='Reps: {0}'}"/>
                             </HorizontalStackLayout>
                             <HorizontalStackLayout Spacing="10">
-                                <Label Text="{Binding AverageLoad, StringFormat='Avg Load: {0:F1}kg'}"/>
+                                <Label Text="{Binding AverageLoad, StringFormat='Śr: {0:F1}kg'}"/>
                                 <Label Text="{Binding MaxLoad, StringFormat='Max: {0:F1}kg'}"/>
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
@@ -29,7 +29,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
             <CollectionView.EmptyView>
-                <Label Text="No training data yet. Go workout!" HorizontalOptions="Center" VerticalOptions="Center" Margin="20"/>
+                <Label Text="Brak danych treningowych. Zacznij ćwiczyć!" HorizontalOptions="Center" VerticalOptions="Center" Margin="20"/>
             </CollectionView.EmptyView>
         </CollectionView>
     </Grid>

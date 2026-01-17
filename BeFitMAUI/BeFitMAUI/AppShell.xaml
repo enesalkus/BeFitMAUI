@@ -8,13 +8,13 @@
     Title="BeFitMAUI">
 
     <TabBar>
-        <Tab Title="Dashboard" Icon="dotnet_bot.png">
+        <Tab Title="Pulpit" Icon="dotnet_bot.png">
             <ShellContent ContentTemplate="{DataTemplate views:DashboardPage}" Route="DashboardPage" />
         </Tab>
-        <Tab Title="Sessions" Icon="dotnet_bot.png">
+        <Tab Title="Treningi" Icon="dotnet_bot.png">
             <ShellContent ContentTemplate="{DataTemplate views:SessionsPage}" Route="SessionsPage" />
         </Tab>
-        <Tab Title="Exercises" Icon="dotnet_bot.png">
+        <Tab Title="Ćwiczenia" Icon="dotnet_bot.png">
             <ShellContent ContentTemplate="{DataTemplate views:ExercisesPage}" Route="ExercisesPage" />
         </Tab>
     </TabBar>

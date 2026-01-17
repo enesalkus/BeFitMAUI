@@ -4,12 +4,27 @@ using System.Windows.Input;
 
 namespace BeFitMAUI.ViewModels
 {
+    [QueryProperty(nameof(SessionId), "Id")]
     public class AddSessionViewModel : BaseViewModel
     {
         private readonly TrainingService _trainingService;
-        private readonly UserService _userService;
         private DateTime _startTime;
         private DateTime _endTime;
+        private int _sessionId;
+        private bool _isEditMode;
+
+        public int SessionId
+        {
+            get => _sessionId;
+            set
+            {
+                _sessionId = value;
+                if (value > 0)
+                {
+                    LoadSessionAsync(value);
+                }
+            }
+        }
 
         public DateTime StartTime
         {
@@ -22,37 +37,43 @@ namespace BeFitMAUI.ViewModels
             get => _endTime;
             set => SetProperty(ref _endTime, value);
         }
+        
+        public bool IsEditMode
+        {
+            get => _isEditMode;
+            set => SetProperty(ref _isEditMode, value);
+        }
 
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public AddSessionViewModel(TrainingService trainingService, UserService userService)
+        public AddSessionViewModel(TrainingService trainingService)
         {
             _trainingService = trainingService;
-            _userService = userService;
             StartTime = DateTime.Now;
             EndTime = DateTime.Now.AddHours(1);
             SaveCommand = new Command(async () => await SaveAsync());
             CancelCommand = new Command(async () => await CancelAsync());
         }
 
+        private async Task LoadSessionAsync(int id)
+        {
+            var session = await _trainingService.GetSessionAsync(id);
+            if (session != null)
+            {
+                StartTime = session.StartTime;
+                EndTime = session.EndTime;
+                IsEditMode = true;
+            }
+        }
+
         private async Task SaveAsync()
         {
-             string userId = Preferences.Get("UserId", string.Empty);
-             if (string.IsNullOrEmpty(userId))
-             {
-                 userId = Guid.NewGuid().ToString();
-                 Preferences.Set("UserId", userId);
-             }
-
-             // Ensure user exists in DB to prevent Foreign Key errors
-             await _userService.GetOrCreateUserAsync(userId);
-
             var session = new TrainingSession
             {
+                Id = SessionId,
                 StartTime = StartTime,
-                EndTime = EndTime,
-                UserId = userId
+                EndTime = EndTime
             };
 
             await _trainingService.SaveSessionAsync(session);

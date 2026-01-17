@@ -25,6 +25,7 @@ namespace BeFitMAUI.ViewModels
         
         public ICommand LoadExercisesCommand { get; }
         public ICommand AddExerciseCommand { get; }
+        public ICommand EditExerciseCommand { get; }
         public ICommand DeleteExerciseCommand { get; }
 
         public ExercisesViewModel(ExerciseService exerciseService)
@@ -33,6 +34,7 @@ namespace BeFitMAUI.ViewModels
             Exercises = new ObservableCollection<ExerciseType>();
             LoadExercisesCommand = new Command(async () => await LoadExercisesAsync());
             AddExerciseCommand = new Command(async () => await AddExerciseAsync());
+            EditExerciseCommand = new Command<ExerciseType>(async (e) => await EditExerciseAsync(e));
             DeleteExerciseCommand = new Command<ExerciseType>(async (e) => await DeleteExerciseAsync(e));
         }
 
@@ -57,7 +59,7 @@ namespace BeFitMAUI.ViewModels
 
         private async Task AddExerciseAsync()
         {
-            string result = await Shell.Current.DisplayPromptAsync("New Exercise", "Enter exercise name:");
+            string result = await Shell.Current.DisplayPromptAsync("Nowe ćwiczenie", "Podaj nazwę ćwiczenia:", "OK", "Anuluj");
             if (!string.IsNullOrWhiteSpace(result))
             {
                 var newExercise = new ExerciseType { Name = result };
@@ -66,10 +68,22 @@ namespace BeFitMAUI.ViewModels
             }
         }
         
+        private async Task EditExerciseAsync(ExerciseType exercise)
+        {
+            if (exercise == null) return;
+            string result = await Shell.Current.DisplayPromptAsync("Edytuj ćwiczenie", "Zmień nazwę:", "Zapisz", "Anuluj", initialValue: exercise.Name);
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                exercise.Name = result;
+                await _exerciseService.SaveExerciseTypeAsync(exercise);
+                await LoadExercisesAsync();
+            }
+        }
+        
         private async Task DeleteExerciseAsync(ExerciseType exercise)
         {
             if (exercise == null) return;
-            bool answer = await Shell.Current.DisplayAlert("Delete", $"Delete {exercise.Name}?", "Yes", "No");
+            bool answer = await Shell.Current.DisplayAlert("Usuń", $"Czy na pewno usunąć {exercise.Name}?", "Tak", "Nie");
             if (answer)
             {
                 await _exerciseService.DeleteExerciseTypeAsync(exercise);

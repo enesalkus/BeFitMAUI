@@ -8,7 +8,6 @@ namespace BeFitMAUI
         {
             InitializeComponent();
             
-            // Ensure database is created
             context.Database.EnsureCreated();
 
             MainPage = new AppShell();

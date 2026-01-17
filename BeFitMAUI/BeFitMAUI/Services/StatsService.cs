@@ -13,14 +13,13 @@ namespace BeFitMAUI.Services
             _context = context;
         }
 
-        public async Task<List<ExerciseStatisticsViewModel>> GetStatsAsync(string userId)
+        public async Task<List<ExerciseStatisticsViewModel>> GetStatsAsync()
         {
              var fourWeeksAgo = DateTime.Now.AddDays(-28);
 
             var exercises = await _context.ExercisePerformeds
                 .Include(e => e.ExerciseType)
                 .Include(e => e.TrainingSession)
-                .Where(e => e.TrainingSession.UserId == userId)
                 .ToListAsync();
 
             var stats = exercises

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj": {}
+    "C:\\Users\\NS\\Documents\\GitHub\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj": {
+    "C:\\Users\\NS\\Documents\\GitHub\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj",
+        "projectUniqueName": "C:\\Users\\NS\\Documents\\GitHub\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj",
         "projectName": "BeFitMAUI",
-        "projectPath": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj",
+        "projectPath": "C:\\Users\\NS\\Documents\\GitHub\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj",
         "packagesPath": "C:\\Users\\NS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\obj\\",
+        "outputPath": "C:\\Users\\NS\\Documents\\GitHub\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

@@ -4,19 +4,19 @@ namespace BeFitMAUI.Models
 {
     public class ExerciseStatisticsViewModel
     {
-        [Display(Name = "Exercise Name")]
+        [Display(Name = "Ćwiczenie")]
         public string ExerciseName { get; set; }
 
-        [Display(Name = "Frequency (Last 4 Weeks)")]
+        [Display(Name = "Częstotliwość (Ostatnie 4 tyg.)")]
         public int Frequency { get; set; }
 
-        [Display(Name = "Total Repetitions")]
+        [Display(Name = "Suma Powtórzeń")]
         public int TotalRepetitions { get; set; }
 
-        [Display(Name = "Average Load (kg)")]
+        [Display(Name = "Śr. Obciążenie (kg)")]
         public double AverageLoad { get; set; }
 
-        [Display(Name = "Max Load (kg)")]
+        [Display(Name = "Maks. Obciążenie (kg)")]
         public double MaxLoad { get; set; }
     }
 }

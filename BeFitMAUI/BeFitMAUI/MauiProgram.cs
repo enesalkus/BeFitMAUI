@@ -23,7 +23,6 @@ namespace BeFitMAUI
             builder.Services.AddScoped<BeFitMAUI.Services.TrainingService>();
             builder.Services.AddScoped<BeFitMAUI.Services.ExerciseService>();
             builder.Services.AddScoped<BeFitMAUI.Services.StatsService>();
-            builder.Services.AddScoped<BeFitMAUI.Services.UserService>();
 
             builder.Services.AddTransient<BeFitMAUI.ViewModels.DashboardViewModel>();
             builder.Services.AddTransient<BeFitMAUI.Views.DashboardPage>();

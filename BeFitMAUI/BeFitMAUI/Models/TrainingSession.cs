@@ -14,9 +14,6 @@ namespace BeFitMAUI.Models
         [Display(Name = "End Time")]
         public DateTime EndTime { get; set; }
 
-        public string? UserId { get; set; }
-        public ApplicationUser? User { get; set; }
-
         public bool IsValid => StartTime <= EndTime;
 
         public ICollection<ExercisePerformed> Exercises { get; set; } = new List<ExercisePerformed>();

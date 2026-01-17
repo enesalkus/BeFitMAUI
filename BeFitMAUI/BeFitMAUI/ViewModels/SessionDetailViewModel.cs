@@ -38,7 +38,9 @@ namespace BeFitMAUI.ViewModels
 
         public ICommand LoadSessionCommand { get; }
         public ICommand DeleteSessionCommand { get; }
+        public ICommand EditSessionCommand { get; }
         public ICommand AddExerciseCommand { get; }
+        public ICommand EditExerciseCommand { get; }
         public ICommand DeleteExerciseCommand { get; }
 
         public SessionDetailViewModel(TrainingService trainingService, ExerciseService exerciseService)
@@ -47,7 +49,9 @@ namespace BeFitMAUI.ViewModels
             _exerciseService = exerciseService;
             LoadSessionCommand = new Command(async () => await LoadSessionAsync());
             DeleteSessionCommand = new Command(async () => await DeleteSessionAsync());
+            EditSessionCommand = new Command(async () => await EditSessionAsync());
             AddExerciseCommand = new Command(async () => await AddExerciseAsync());
+            EditExerciseCommand = new Command<ExercisePerformed>(async (ep) => await EditExerciseAsync(ep));
             DeleteExerciseCommand = new Command<ExercisePerformed>(async (ep) => await DeleteExerciseAsync(ep));
         }
 
@@ -56,18 +60,22 @@ namespace BeFitMAUI.ViewModels
             IsLoading = true;
             try
             {
-                string userId = Preferences.Get("UserId", string.Empty);
-                Session = await _trainingService.GetSessionAsync(SessionId, userId);
+                Session = await _trainingService.GetSessionAsync(SessionId);
             }
             finally
             {
                 IsLoading = false;
             }
         }
+        
+        private async Task EditSessionAsync()
+        {
+             await Shell.Current.GoToAsync($"AddSessionPage?Id={SessionId}");
+        }
 
         private async Task DeleteSessionAsync()
         {
-            bool answer = await Shell.Current.DisplayAlert("Delete", "Delete this session?", "Yes", "No");
+            bool answer = await Shell.Current.DisplayAlert("Usuń", "Czy na pewno usunąć ten trening?", "Tak", "Nie");
             if (answer)
             {
                 await _trainingService.DeleteSessionAsync(Session);
@@ -77,26 +85,18 @@ namespace BeFitMAUI.ViewModels
 
         private async Task AddExerciseAsync()
         {
-            // Simple approach: DisplayActionSheet with Exercises or navigate to a selection page.
-            // For now, let's just pick from a list via ActionSheet for simplicity if list is small, 
-            // but normally we need a dedicated page.
             var exercises = await _exerciseService.GetExerciseTypesAsync();
             var exerciseNames = exercises.Select(e => e.Name).ToArray();
             
-            string action = await Shell.Current.DisplayActionSheet("Select Exercise", "Cancel", null, exerciseNames);
-            if (action != "Cancel" && action != null)
+            string action = await Shell.Current.DisplayActionSheet("Wybierz ćwiczenie", "Anuluj", null, exerciseNames);
+            if (action != "Anuluj" && action != null)
             {
                 var selectedType = exercises.FirstOrDefault(e => e.Name == action);
                 if (selectedType != null)
                 {
-                   // Prompt for Load, Sets, Reps -> This is clumsy with prompts.
-                   // Better: Navigate to AddExercisePerformedPage passing SessionId and ExerciseTypeId.
-                   // But to be quick, I'll use prompts or just add default and let user edit (if we add edit).
-                   // Let's use prompts for now.
-                   
-                   string loadStr = await Shell.Current.DisplayPromptAsync("Load", "Enter Load (kg):", keyboard: Keyboard.Numeric);
-                   string setsStr = await Shell.Current.DisplayPromptAsync("Sets", "Enter Sets:", keyboard: Keyboard.Numeric);
-                   string repsStr = await Shell.Current.DisplayPromptAsync("Reps", "Enter Repetitions:", keyboard: Keyboard.Numeric);
+                   string loadStr = await Shell.Current.DisplayPromptAsync("Obciążenie", "Podaj obciążenie (kg):", initialValue: "0", keyboard: Keyboard.Numeric);
+                   string setsStr = await Shell.Current.DisplayPromptAsync("Serie", "Podaj liczbę serii:", initialValue: "3", keyboard: Keyboard.Numeric);
+                   string repsStr = await Shell.Current.DisplayPromptAsync("Powtórzenia", "Podaj liczbę powtórzeń:", initialValue: "10", keyboard: Keyboard.Numeric);
 
                    if (double.TryParse(loadStr, out double load) && int.TryParse(setsStr, out int sets) && int.TryParse(repsStr, out int reps))
                    {
@@ -114,10 +114,29 @@ namespace BeFitMAUI.ViewModels
                 }
             }
         }
+        
+        private async Task EditExerciseAsync(ExercisePerformed ep)
+        {
+            if (ep == null) return;
+            
+           string loadStr = await Shell.Current.DisplayPromptAsync("Edytuj Obciążenie", "Nowe obciążenie (kg):", initialValue: ep.Load.ToString(), keyboard: Keyboard.Numeric);
+           string setsStr = await Shell.Current.DisplayPromptAsync("Edytuj Serie", "Nowa liczba serii:", initialValue: ep.Sets.ToString(), keyboard: Keyboard.Numeric);
+           string repsStr = await Shell.Current.DisplayPromptAsync("Edytuj Powtórzenia", "Nowa liczba powtórzeń:", initialValue: ep.Repetitions.ToString(), keyboard: Keyboard.Numeric);
+
+           if (double.TryParse(loadStr, out double load) && int.TryParse(setsStr, out int sets) && int.TryParse(repsStr, out int reps))
+           {
+                ep.Load = load;
+                ep.Sets = sets;
+                ep.Repetitions = reps;
+                
+                await _trainingService.SaveExerciseAsync(ep);
+                await LoadSessionAsync();
+           }
+        }
 
         private async Task DeleteExerciseAsync(ExercisePerformed ep)
         {
-            bool answer = await Shell.Current.DisplayAlert("Delete", "Remove exercise?", "Yes", "No");
+            bool answer = await Shell.Current.DisplayAlert("Usuń", "Usunąć ćwiczenie?", "Tak", "Nie");
             if (answer)
             {
                 await _trainingService.DeleteExerciseAsync(ep);

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "v72+UIhB9ak=",
+  "dgSpecHash": "LGPYFcRQQac=",
   "success": true,
-  "projectFilePath": "C:\\Users\\NS\\Desktop\\BeFit\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj",
+  "projectFilePath": "C:\\Users\\NS\\Documents\\GitHub\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI\\BeFitMAUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NS\\.nuget\\packages\\googlegson\\2.13.0.1\\googlegson.2.13.0.1.nupkg.sha512",
     "C:\\Users\\NS\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

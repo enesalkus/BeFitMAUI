@@ -25,6 +25,7 @@ namespace BeFitMAUI.ViewModels
 
         public ICommand LoadSessionsCommand { get; }
         public ICommand AddSessionCommand { get; }
+        public ICommand EditSessionCommand { get; }
         public ICommand SessionSelectedCommand { get; }
 
         public SessionsViewModel(TrainingService trainingService)
@@ -33,6 +34,7 @@ namespace BeFitMAUI.ViewModels
             Sessions = new ObservableCollection<TrainingSession>();
             LoadSessionsCommand = new Command(async () => await LoadSessionsAsync());
             AddSessionCommand = new Command(async () => await AddSessionAsync());
+            EditSessionCommand = new Command<TrainingSession>(async (s) => await EditSessionAsync(s));
             SessionSelectedCommand = new Command<TrainingSession>(async (session) => await OnSessionSelected(session));
         }
 
@@ -42,14 +44,7 @@ namespace BeFitMAUI.ViewModels
             IsLoading = true;
             try
             {
-                string userId = Preferences.Get("UserId", string.Empty);
-                if (string.IsNullOrEmpty(userId))
-                {
-                    userId = Guid.NewGuid().ToString();
-                    Preferences.Set("UserId", userId);
-                }
-
-                var sessions = await _trainingService.GetSessionsAsync(userId);
+                var sessions = await _trainingService.GetSessionsAsync();
                 Sessions.Clear();
                 foreach (var session in sessions)
                 {
@@ -64,14 +59,18 @@ namespace BeFitMAUI.ViewModels
 
         private async Task AddSessionAsync()
         {
-            // Navigate to Add Session Page
              await Shell.Current.GoToAsync("AddSessionPage");
+        }
+
+        private async Task EditSessionAsync(TrainingSession session)
+        {
+            if (session == null) return;
+            await Shell.Current.GoToAsync($"AddSessionPage?Id={session.Id}");
         }
 
         private async Task OnSessionSelected(TrainingSession session)
         {
             if (session == null) return;
-             // Navigate to Details
              await Shell.Current.GoToAsync($"SessionDetailPage?Id={session.Id}");
         }
     }
